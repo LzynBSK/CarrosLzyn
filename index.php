@@ -20,20 +20,30 @@
 
         // var_dump($nome,$idade,$salario,$casado,$formacao,$objeto);
         
-        $usuarios = [
-            'SP' => [
-                'nome'=>'Marcos',
-                'idade'=>18,
-                'formacao' => ['Pedreiro','Pintor','Cozinheiro']
+        $empresa =[
+            "Producao" =>[
+                "diurno" =>[
+                    "Func"=>["Marcos","Maria","Virginia"],
+                    "horario"=>[
+                        "entrada"=>"07:00",
+                        "saida"=>"18:00"
+                    ]
+                ],
+                "noturno"=>[
+                    "Amanda","Beatriz","Carla"
+                ]
             ],
-            'user2' => [
-                'nome'=>'Telma',
-                'idade'=>22,
-                'formacao' => ['Engenheira','Arquitéta']
-            ],
+            "Limpeza"  =>[
+                "diurno" =>[
+                    "Fernando","Maria","Juam"
+                ],
+                "noturno"=>[
+                    "Brayan","Kaûe","Sergio"
+                ]
+            ]
         ];
 
-        var_dump($usuarios);
+        var_dump($empresa);
 
 // ************* Exercício ***************************;
 // Crie uma array com o seguinte conteúdo;
