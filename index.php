@@ -1,3 +1,21 @@
+<?php
+    $con = new mysqli('localhost','root','','aulapw-2');
+    if(isset($_POST['btnCadastrar'])){
+        $func = $_POST['var_func'];   
+        $mes  = $_POST['var_data'];   
+        $sal  = $_POST['var_salario'];
+
+        $cmdSql = "INSERT INTO dados VALUES ('$func','$mes','$sal')";
+
+        $con->query($cmdSql);
+    }
+
+    $resultado = $con->query('Select * from dados');    
+    $dados = false;
+    if($resultado->num_rows > 0){
+        $dados = $resultado->fetch_all();       
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,7 +27,7 @@
 </head>
 
 <body>
-    <form method="get" id="formSalario">
+    <form method="post" id="formSalario">
         <fieldset>
             <legend>Salários</legend>
 
@@ -42,8 +60,25 @@
                 <th>Funcionário</th>
                 <th>Mês</th>
                 <th>Salário</th>
-            </tr>
-            
+            </tr>            
+            <?php
+                if($dados){
+                    $total = 0;
+                    foreach ($dados as $linhas) {
+                        echo '<tr>
+                                <td>'.$linhas[0].'</td>
+                                <td>'.$linhas[1].'</td>
+                                <td>'.$linhas[2].'</td>
+                            </tr>';
+                            $total+=$linhas[2];
+                    }
+                    echo'<tr>
+                            <td colspan="2"><p class="textRight">Total</p></td>
+                            <td>R$'.$total.'</td>
+                        </tr>';
+                }
+            ?>
+
         </table>
     </div>
     <?php
