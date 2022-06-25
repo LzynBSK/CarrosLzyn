@@ -1,3 +1,30 @@
+<?php
+    $con = new mysqli('localhost','root','','carros_lzyn');
+    if(isset($_GET['btnCadastrar'])){
+        
+        $nome = $_GET['txtNome'];
+        $marca = $_GET['txtMrc'];
+        $estado = $_GET['txtEstd'];
+        $anoLancamento = $_GET['txtAno'];
+        $vendido = $_GET['txtVndd'];
+        $cidade = $_GET['txtCidade'];
+        $preco = $_GET['txtPreco'];
+
+
+
+        $cmdSql = "INSERT INTO carro VALUES (NUll, '$nome','$marca','$estado','$anoLancamento','$vendido','$cidade','$preco')";
+
+
+        $con->query($cmdSql);
+    }
+
+
+    $resultado = $con->query('Select * from carro');    
+    $carro = false;
+    if($resultado->num_rows > 0){
+        $carro = $resultado->fetch_all();       
+    }
+?>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -11,38 +38,24 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- Font Awesome 5 Icons -->
-    <script src="https://kit.fontawesome.com/75c15e52c5.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/cfaf861b72.js" crossorigin="anonymous"></script>
 
-    <title>Cadastro de clientes</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="./img/logo.jpg">
+
+    <title>Cadastro de carros</title>
 </head>
 
 <body>
-    <h1 style="text-align:center">Atividade interdisciplinar PW-2 com BD-2</h1>
-    <ul>
-        
-        <li><h2>Tarefas a serem executadas. </h2></li>
-        <ol>
-            <li>Crie uma base de dados no MySql com o nome de “atividade_pw_bd”;</li>
-            <li>Restaure o backup “atividade_pw_bd.sql” para a base de dados que você criou;</li>
-            <li>Na base de dados há uma tabela chamada “cliente”, utilize-a para cadastrar os dados envidados do formulário php para o banco mysql;</li>
-            <li>Aproveitando que a interface já está pronta, sua função é apenas conectar o PHP ao MySql e criar as estruturas necessárias para cadastrar e consultar os dados;</li>
-            <li>Exiba na tabela que se encontra abaixo do formulário cada um dos clientes cadastrados;</li>
-            <li>Os botões (Editar e Deletar) do exemplo, são apenas estéticos; não se preocupe com eles;</li>
-            <li>A &lt;tr&gt; (linha) é apenas um exemplo, apague-a e carregue os dados apenas a partir do banco.</li>    
-                
-        </ol>
-    </ul>
-    <hr>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand">Clientes</a>
-            <div class="d-flex">
-                <input id="txtConsulta" class="form-control me-2" type="search" placeholder="Consultar"
-                    aria-label="Search">
-                <button id="btnIr" class="btn btn-outline-success" type="submit">Ir</button>
-            </div>
-        </div>
-    </nav>
+<div class="blend">
+
+            <h1>CADASTRAR CARROS</h1>
+</div>
+
+    
+            
+
 
     <div class="container">
         <form method="get" class="row g-3">
@@ -53,59 +66,68 @@
             </div>
 
             <div class="col-md-4">
-                <label for="inputEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail" name="txtEmail">
+                <label for="inputEmail" class="form-label">Marca</label>
+                <input type="marca" class="form-control" id="inputMrc" name="txtMrc">
             </div>
 
             <div class="col-md-4">
-                <label for="inputTel" class="form-label">Telefone</label>
-                <input type="tel" class="form-control" id="inputTel" name="txtTel">
+                <label for="inputTel" class="form-label">Estado</label>
+                <input type="estado" class="form-control" id="inputEstd" name="txtEstd" placeholder="Usado/novo ...">
             </div>
 
             <div class="col-md-2">
-                <label for="inputUF" class="form-label">Estado</label>
-                <select id="inputUF" name="txtUF" class="form-select">
+                <label for="inputAN" class="form-label">Ano de Lançamento</label>
+                <select id="inputAN" name="txtAno" class="form-select">
                     <option selected>Escolha...</option>
-                    <option value="AC">Acre</option>	
-                    <option value="AL">Alagoas</option>	
-                    <option value="AP">Amapá</option>	
-                    <option value="AM">Amazonas</option>	
-                    <option value="BA">Bahia</option>	
-                    <option value="CE">Ceará</option>	
-                    <option value="ES">Espírito Santo</option>	
-                    <option value="GO">Goiás</option>	
-                    <option value="MA">Maranhão</option>	
-                    <option value="MT">Mato Grosso</option>	
-                    <option value="MS">Mato Grosso do Sul</option>	
-                    <option value="MG">Minas Gerais</option>	
-                    <option value="PA">Pará</option>	
-                    <option value="PB">Paraíba</option>	
-                    <option value="PR">Paraná</option>	
-                    <option value="PE">Pernambuco</option>	
-                    <option value="PI">Piauí</option>	
-                    <option value="RJ">Rio de Janeiro</option>	
-                    <option value="RN">Rio Grande do Norte</option>	
-                    <option value="RS">Rio Grande do Sul</option>	
-                    <option value="RO">Rondônia</option>	
-                    <option value="RR">Roraima</option>	
-                    <option value="SC">Santa Catarina</option>	
-                    <option value="SP">São Paulo</option>	
-                    <option value="SE">Sergipe</option>	
-                    <option value="TO">Tocantins</option>	
-                    <option value="DF">Distrito Federal</option>	
+                    <option value="2000">2000</option>	
+                    <option value="2001">2001</option>	
+                    <option value="2002">2002</option>	
+                    <option value="2003">2003</option>	
+                    <option value="2004">2004</option>	
+                    <option value="2005">2005</option>	
+                    <option value="2006">2006</option>	
+                    <option value="2007">2007</option>	
+                    <option value="2008">2008</option>	
+                    <option value="2009">2009</option>	
+                    <option value="2010">2010</option>	
+                    <option value="2011">2011</option>	
+                    <option value="2012">2012</option>	
+                    <option value="2013">2013</option>	
+                    <option value="2014">2014</option>	
+                    <option value="2015">2015</option>	
+                    <option value="2016">2016</option>	
+                    <option value="2017">2017</option>	
+                    <option value="2018">2018</option>	
+                    <option value="2019">2019</option>	
+                    <option value="2020">2020</option>	
+                    <option value="2021">2021</option>	
+                    <option value="2022">2022</option>	
+                    <option value="2023">2023</option>	
+                    <option value="2024">2024</option>	
+                    <option value="2025">2025</option>	
+                    <option value="2026">2026</option>	
                 </select>
             </div>
             
+            <div class="col-md-2">
+                <label for="inputVndd" class="form-label">Disponível/Vendido</label>
+                <select id="inputVndd" name="txtVndd" class="form-select">
+                    <option value="Disponível">Disponivel</option>
+                    <option value="Vendido">Vendido</option>		
+                </select>
+            </div>
+
             <div class="col-md-4">
                 <label for="inputCidade" class="form-label">Cidade</label>
                 <input type="text" class="form-control" id="inputCidade" name="txtCidade">
             </div>
-            <div class="col-md-6">
-                <label for="inputEndereco" class="form-label">Endereço</label>
-                <input type="text" class="form-control" id="inputEndereco" name="txtEndereco" placeholder="Rua, Avenida, ....">
-            </div>            
+            <div class="col-md-4">
+                <label for="inputPreco" class="form-label">Preço</label>
+                <input type="text" class="form-control" id="inputPreco" name="txtPreco" value="R$ " placeholder="R$...">
+            </div>     
+            
             <div class="col-12">
-                <button id="btnCadastrar" type="submit" class="btn btn-primary" name="btnCadastrar">Cadastrar</button>
+                <button id="btnCadastrar" type="submit" class="btn btn-outline-danger" name="btnCadastrar">Cadastrar</button>
             </div>
         </form>
 
@@ -115,32 +137,54 @@
             <thead>
               <tr>
                 <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">UF</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Ano de Lançamento</th>
+                <th scope="col">Disponível/Vendido</th>
                 <th scope="col">Cidade</th>
-                <th scope="col">Endereço</th>
+                <th scope="col">Preço</th>
                 <th scope="col"></th>
               </tr>
             </thead>
-            <tbody>
-            <!-- Está tr (linha) é apenas um exemplo, apague-a e carregue os dados apenas a partir do banco.  -->
-              <tr>
-                <th scope="row">Eliton Camargo</th>
-                <td>elitoncamargo@gmail.com</td>
-                <td>(00)00000-0000</td>
-                <td>SP</td>
-                <td>Tietê</td>
-                <td>Rua Que Você quiser, 70</td>
-                <td><i class='far fa-edit' style='font-size:20px;color:rgb(17, 0, 255)'></i></td>
-                <td><i class='far fa-trash-alt' style='font-size:20px;color:red'></i></td>
-              </tr>
-             
+            <tbody class = tabela-veiculos>
+            <?php
+                if($carro){
+                    foreach ($carro as $linhas) {
+                        echo '<tr>
+                                
+                                <td>'.$linhas[1].'</td>
+                                <td>'.$linhas[2].'</td>
+                                <td>'.$linhas[3].'</td>
+                                <td>'.$linhas[4].'</td>
+                                <td>'.$linhas[5].'</td>
+                                <td>'.$linhas[6].'</td>
+                                <td>'.$linhas[7].'</td>
+
+                            </tr>';
+                    }
+                }
+            ?>
+            
             </tbody>
           </table>
-
+          
     </div>
+    
 
+        <footer>
+        <div class="footer-content">    
+        <h3>Carros Lzyn</h3>
+            <p>Desenvolvido por LzynDev </p>
+            <ul class = "social">
+                <li><a href="https://www.youtube.com/channel/UCbBDgtmOzKHpq3BqjhEyTHQ"><i class="fa fa-youtube"></i></a></li>
+                <li><a href="https://github.com/LzynBSK"><i class="fa-brands fa-github"></i></a></li>
+                <li><a href="https://discord.gg/XF9RyEJRuU"><i class="fa-brands fa-discord"></i></a></li>
+            </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>copyright &copy; 2022 LzynDev. Designed by <span>LzynDev</span></p>
+            </div>
+        </footer>
 
 </body>
 
