@@ -126,8 +126,8 @@
                 <input type="text" class="form-control" id="inputPreco" name="txtPreco" value="R$ " placeholder="R$...">
             </div>     
             
-            <div class="col-12">
-                <button id="btnCadastrar" type="submit" class="btn btn-outline-danger" name="btnCadastrar">Cadastrar</button>
+            <div class="btn-cds">
+            <button style="--clr: purple" type="submit" name="btnCadastrar"><span>Cadastrar</span><i></i></button>
             </div>
         </form>
 
