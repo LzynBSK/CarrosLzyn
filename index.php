@@ -42,21 +42,45 @@
 
     <link rel="stylesheet" href="/css/style.css">
 
-    <link rel="shortcut icon" href="./img/logo.jpg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous">
+
+    <link rel="shortcut icon" href="./img/My Logo.png">
 
     <title>Cadastro de carros</title>
 </head>
 
 <body>
-<div class="blend">
 
-            <h1>CADASTRAR CARROS</h1>
+<header>
+    <a href="#" class="logo" >LZCRS</a>
+        <ul class="navigation">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Portfólio</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+</header>
+<div class="banner">
+    <div class="content">
+        <h2>Cadastro de Carros Para Administrar</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet animi dignissimos temporibus? Odit reiciendis, accusamus nihil in illo quibusdam libero sapiente quae a sequi, ex molestiae aut quia tempora voluptates.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet animi dignissimos temporibus? Odit reiciendis, accusamus nihil in illo quibusdam libero sapiente quae a sequi, ex molestiae aut quia tempora voluptates.</p>
+        <a href="#cadastros">Cadastre o Seu</a>
+    </div>
+    <img src="/img/My Logo.png" class="image" 
+    width="250px"
+    height="250px">
 </div>
 
     
             
 
-
+<main>
+    <section id="cadastros">
     <div class="container">
         <form method="get" class="row g-3">
 
@@ -167,9 +191,9 @@
             
             </tbody>
           </table>
-          
     </div>
-    
+    </section>
+</main>
 
         <footer>
         <div class="footer-content">    
